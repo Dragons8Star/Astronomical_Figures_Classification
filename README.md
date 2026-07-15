@@ -12,38 +12,38 @@ This is an example of the model classifiying this image as constellation with 48
 ## The Algorithm
 I used InageNet for the classification.
 
-## Running this project
+## Running this project:
 
-# Downloads dataset
+#### Downloads dataset
 #!/bin/bash
 curl -L -o ~/Downloads/space-images-category.zip\
   https://www.kaggle.com/api/v1/datasets/download/abhikalpsrivastava15/space-images-category
 
 
-# Goes to data in classification in training in python in jetson inference
+#### Goes to data in classification in training in python in jetson inference
 cd jetson-inference/python/training/classification/data
 
-# Unzips dataset
+#### Unzips dataset
 unzip ~/Downloads/space-images-category.zip -d space_images
 
-# Goes to jetson inference
+#### Goes to jetson inference
 cd ~/jetson-inference
 
-# Goes to docker
+#### Goes to docker
 ./docker/run.sh
 
-# Goes to classification in training in python
+#### Goes to classification in training in python
 cd python/training/classification
 
-# Trains the model
+#### Trains the model
 python3 train.py --model-dir=models/space_images data/space_images
 
-# Exports as ONNX 
+#### Exports as ONNX 
 python3 onnx_export.py --model-dir=models/space_images
 
-# Sets the NET and DATASET variables
+#### Sets the NET and DATASET variables
 NET=models/space_images
 DATASET=data/space_images
 
-# Tests an image
+#### Tests an image
 imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/constellation/27.jpg constellation1.jpg
