@@ -47,3 +47,6 @@ DATASET=data/space_images
 
 #### Tests an image
 imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/constellation/27.jpg constellation1.jpg
+
+## Video
+https://drive.google.com/file/d/1BC3hlPdlXRjIQP_fwGocJ_7yXm45r7LL/view?usp=sharing
